@@ -6,18 +6,22 @@ using namespace std;
 struct Vec {
 	int len;
 	float *v;
+	//initialise the size of the vector
 	Vec(int len) : len(len) {
 		v = new float[len];
 	}
+	//copy constructor
 	Vec(const Vec& x) : len(x.len) {
 		v = new float[len];
 		memcpy(v, x.v, sizeof(float)*len);
 	}
+	//destructor
 	~Vec(void) {
 		delete [] v;
 	} 
 };
 
+//defines sum of 2 vector
 inline Vec operator+(const Vec& x, const Vec& y) {
 	assert(x.len == y.len);
 	Vec res(x.len);
